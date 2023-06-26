@@ -45,10 +45,9 @@ class login : AppCompatActivity() {
                 Log.d("MainActivity", "Credenciales válidas, iniciar sesión exitoso")
                 showToast("Gracias por el dinero gratis")
 
-
-
                 //ir al menu
-                val intent = Intent(this, menu::class.java)
+                val intent = Intent(this, datos::class.java)
+                intent.putExtra("usuario", usuario)
                 startActivity(intent)
                 finish()
 

@@ -76,7 +76,7 @@ class ruleta : AppCompatActivity() ,Animation.AnimationListener {
         val shift = 0
         val prizeIndex = (shift + end) % numOfPrizes
 
-        prizeText = " ${prizes[prizeIndex]}  Chuflaydolares"
+        prizeText = " ${prizes[prizeIndex]}  Chuflayrdolares"
 
         val rotateAnim = RotateAnimation(
             0f,mSpinRevolution + end,

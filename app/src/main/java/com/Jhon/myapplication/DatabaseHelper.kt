@@ -1,5 +1,6 @@
 package com.Jhon.myapplication
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -10,17 +11,18 @@ import android.util.Log
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 3
         private const val DATABASE_NAME = "UsuariosDB"
         private const val TABLE_NAME = "Usuarios"
         private const val COLUMN_ID = "id"
         private const val COLUMN_USUARIO = "usuario"
         private const val COLUMN_CONTRASENA = "contrasena"
         private const val COLUMN_CORREO = "correo"
+        private const val COLUMN_DINERO = "dinero"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_USUARIO TEXT, $COLUMN_CONTRASENA TEXT, $COLUMN_CORREO TEXT)")
+        val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_USUARIO TEXT, $COLUMN_CONTRASENA TEXT, $COLUMN_CORREO TEXT, $COLUMN_DINERO INTEGER)")
         db.execSQL(CREATE_TABLE)
         insertInitialUser(db)
     }
@@ -35,6 +37,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         values.put(COLUMN_USUARIO, "jhon")
         values.put(COLUMN_CONTRASENA, "123")
         values.put(COLUMN_CORREO, "jhons@gmail.com")
+        values.put(COLUMN_DINERO, 500)
         db.insert(TABLE_NAME, null, values)
     }
 
@@ -44,6 +47,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         values.put(COLUMN_USUARIO, usuario)
         values.put(COLUMN_CONTRASENA, contrasena)
         values.put(COLUMN_CORREO, correo)
+        values.put(COLUMN_DINERO, 500)
         return db.insert(TABLE_NAME, null, values)
     }
 
@@ -65,6 +69,32 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return credentialsMatch
     }
 
+    fun getMoneyByUsername(usuario: String): Int {
+        val db = this.readableDatabase
+        val selection = "$COLUMN_USUARIO = ?"
+        val selectionArgs = arrayOf(usuario)
+        val cursor: Cursor = db.query(
+            TABLE_NAME,
+            arrayOf(COLUMN_DINERO),
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null
+        )
+        var dinero = 0
+        if (cursor.moveToFirst()) {
+            val dineroIndex = cursor.getColumnIndex(COLUMN_DINERO)
+            if (dineroIndex != -1) {
+                dinero = cursor.getInt(dineroIndex)
+            }
+        }
+        cursor.close()
+        return dinero
+    }
+
+
+    @SuppressLint("Range")
     fun printUserData() {
         val db = this.readableDatabase
         val cursor: Cursor = db.query(
@@ -81,7 +111,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 val usuario = cursor.getString(cursor.getColumnIndex(COLUMN_USUARIO))
                 val contrasena = cursor.getString(cursor.getColumnIndex(COLUMN_CONTRASENA))
                 val correo = cursor.getString(cursor.getColumnIndex(COLUMN_CORREO))
-                Log.d("DatabaseHelper", "Usuario: $usuario, Contraseña: $contrasena, Correo: $correo")
+                val dinero = cursor.getInt(cursor.getColumnIndex(COLUMN_DINERO))
+                Log.d("DatabaseHelper", "Usuario: $usuario, Contraseña: $contrasena, Correo: $correo, Dinero: $dinero")
             } while (cursor.moveToNext())
         }
         cursor.close()
