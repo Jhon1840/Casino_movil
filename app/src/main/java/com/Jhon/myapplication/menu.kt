@@ -21,12 +21,16 @@ class menu : AppCompatActivity() {
         mediaPlayer.start()
         mediaPlayer.isLooping = true
 
+        val usuario = intent.getStringExtra("usuario")
+
+
         //ir al login up
         val button: Button = findViewById(R.id.ruleta)
         button.setOnClickListener {
             val intent = Intent(this, ruleta::class.java)
+            intent.putExtra("usuario", usuario)
             startActivity(intent)
-            finish()
+
         }
     }
 }

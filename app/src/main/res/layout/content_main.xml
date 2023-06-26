@@ -14,6 +14,7 @@
     tools:showIn="@layout/activity_main">
 
 
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
         android:background="#F33434"

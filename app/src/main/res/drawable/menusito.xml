@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <solid
-        android:color="#F33434"
+        android:color="#fd6084"
         >
 
     </solid>
@@ -14,10 +14,7 @@
         ></padding>
 
     <corners
-        android:bottomLeftRadius="15dp"
-        android:bottomRightRadius="15dp"
-        android:topRightRadius="15dp"
-        android:topLeftRadius="15dp"
+        android:radius="40dp"
 
         />
 </shape>

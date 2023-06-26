@@ -16,19 +16,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="320dp"
             android:background="@drawable/diseno_menu"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView"
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="16dp"
-                android:text="¡Bienvenido!"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp" />
+                android:layout_height="60dp"
+                android:background="#F33434"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/welcome" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animationView"
@@ -37,7 +36,162 @@
                 android:background="#F33434"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/rush" />
+                app:lottie_rawRes="@raw/emoji" />
+
+            <TextView
+                android:id="@+id/textView_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="¡Bienvenido!"
+                android:textColor="#FFFFFF"
+                android:fontFamily="sans-serif"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView_dinero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-30dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="¡Bienvenido!"
+                android:textColor="#FFFFFF"
+                android:fontFamily="sans-serif"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/buttonns"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/animationView3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="#ed596a"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/juego"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="40dp"
+                        />
+
+                    <Button
+                        android:id="@+id/juegos"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="40dp"
+
+                        android:backgroundTint="#ed596a"
+                        android:text="Juegos" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/buttonns"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/animationView4"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="#ed596a"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/dineross"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="40dp"
+                        />
+
+                    <Button
+                        android:id="@+id/dineross"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="40dp"
+
+                        android:backgroundTint="#ed596a"
+                        android:text="Dinero" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/buttonns"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/animationView5"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="#ed596a"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/salirr"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="40dp"
+                        />
+
+                    <Button
+                        android:id="@+id/BtnSalir"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="35dp"
+
+                        android:backgroundTint="#ed596a"
+                        android:text="sing out" />
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

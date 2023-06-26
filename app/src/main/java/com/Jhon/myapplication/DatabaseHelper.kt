@@ -93,6 +93,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return dinero
     }
 
+    fun updateMoneyByUsername(usuario: String, nuevoDinero: Int): Boolean {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(COLUMN_DINERO, nuevoDinero)
+        val whereClause = "$COLUMN_USUARIO = ?"
+        val whereArgs = arrayOf(usuario)
+        val numRowsAffected = db.update(TABLE_NAME, values, whereClause, whereArgs)
+        return numRowsAffected > 0
+    }
+
 
     @SuppressLint("Range")
     fun printUserData() {
